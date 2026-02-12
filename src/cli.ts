@@ -31,17 +31,18 @@ const mainMenu = async (): Promise<void> => {
 			]);
 
 			const allCountries = await getContinent(continent.region);
-			const countrys = await inquirer.prompt<{ country: string }>([
+			const countrys = await inquirer.prompt<{ selectCountry: string }>([
 				{
 					type: "select",
-					name: "region",
+					name: "selectCountry",
 					message: "Select a country:",
 					choices: allCountries,
 				},
 			]);
 
-			const countryInfo = await getDestinationtInfo(countrys.country);
-			console.log(countryInfo[0].name.common);
+			const countryInfo = await getDestinationtInfo(
+				countrys.selectCountry,
+			);
 		}
 		//console.log(answers.action);
 	} catch (error) {

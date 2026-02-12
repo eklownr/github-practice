@@ -7,8 +7,9 @@ export const getDestinationtInfo = async (contryName: string) => {
 	try {
 		const response = await fetch(contryAPI + contryName);
 		const data = await response.json();
-		console.log(data);
-
+		console.log(
+			`The capital of ${data[0].name.common} is ${data[0].capital[0]}`,
+		);
 		return data;
 	} catch (error) {
 		console.log(error);
