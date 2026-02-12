@@ -5,6 +5,7 @@ import { getContinent } from "./services/destinationService.js";
 // Main menu show trips, activity, budget, options.
 const mainMenu = async (): Promise<void> => {
 	try {
+		// Handle users options
 		const answers = await inquirer.prompt<{ action: string }>([
 			{
 				type: "select",
@@ -31,6 +32,7 @@ const mainMenu = async (): Promise<void> => {
 			]);
 
 			const allCountries = await getContinent(continent.region);
+			// Handle users options
 			const countrys = await inquirer.prompt<{ selectCountry: string }>([
 				{
 					type: "select",
@@ -43,8 +45,10 @@ const mainMenu = async (): Promise<void> => {
 			const countryInfo = await getDestinationtInfo(
 				countrys.selectCountry,
 			);
-		}
-		//console.log(answers.action);
+			console.log(
+				`The capital of ${countryInfo[0].name.common} is ${countryInfo[0].capital[0]}`,
+			);
+		} // end of View Trips
 	} catch (error) {
 		// Handle errors
 		if (error instanceof Error) {
