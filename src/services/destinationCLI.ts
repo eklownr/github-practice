@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 import { getDestinationtInfo } from "./destinationService.js";
 import { Greece, Pakistan, Norway } from "../models.js";
+import { mainMenu } from "../cli.js";
 
 // Country menu, show destinations an d price.
 export const countryMenu = async (): Promise<void> => {
@@ -28,6 +29,8 @@ export const countryMenu = async (): Promise<void> => {
 			console.log(
 				`The capital of ${countryInfo[0].name.common} is ${countryInfo[0].capital[0]} and the flag looks like this ${countryInfo[0].flag}`,
 			);
+			// run main menu again
+			mainMenu();
 		} else {
 			console.log("Country information not found");
 		}
@@ -40,5 +43,3 @@ export const countryMenu = async (): Promise<void> => {
 		}
 	}
 };
-
-countryMenu();
