@@ -1,14 +1,16 @@
 const contryAPI: string = "https://restcountries.com/v3.1/name/";
 
-type Country = { [key: string]: string | number | string[] | undefined };
+type Country = { [key: string]: string | number | string[] };
 
-// get info on a specific country
+/**
+ * Get info on a specific country
+ * @param contryName - The name of the country
+ * @returns - Country data
+ */
 export async function getDestinationtInfo(
 	contryName: string,
 ): Promise<Country> {
 	try {
-		console.log(contryName);
-
 		const response = await fetch(contryAPI + contryName);
 		const data: Country = await response.json();
 		return data;

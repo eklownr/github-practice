@@ -10,10 +10,13 @@ export const countryMenu = async (): Promise<void> => {
 			{
 				type: "select",
 				name: "selectCountry",
-				message: `Select a country: <country - price>
- * Greece - ${Greece.cost} kr, 
+				message: `Select a country: <Country> - <Ticket price>
+ ******************************
+ * Greece   - ${Greece.cost} kr, 
  * Pakistan - ${Pakistan.cost} kr, 
- * Norway - ${Norway.cost} kr`,
+ * Norway   -  ${Norway.cost} kr
+ * ******************************`,
+
 				choices: ["Greece ", "Pakistan", "Norway"],
 			},
 		]);
@@ -23,7 +26,7 @@ export const countryMenu = async (): Promise<void> => {
 
 		if (countryInfo !== undefined) {
 			console.log(
-				`The capital of ${countryInfo[0].name.common} is ${countryInfo[0].capital[0]} the flag of this country ${countryInfo[0].flag}`,
+				`The capital of ${countryInfo[0].name.common} is ${countryInfo[0].capital[0]} and the flag looks like this ${countryInfo[0].flag}`,
 			);
 		} else {
 			console.log("Country information not found");
