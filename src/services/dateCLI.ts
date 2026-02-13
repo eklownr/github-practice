@@ -1,6 +1,4 @@
 import inquirer from "inquirer";
-import { getDestinationtInfo } from "./destinationService.js";
-import { Greece, Pakistan, Norway } from "../models.js";
 import { mainMenu } from "../cli.js";
 import { addWeeks } from "./utils.js";
 
@@ -12,7 +10,7 @@ export const dateMenu = async (): Promise<void> => {
 			{
 				type: "select",
 				name: "selectDate",
-				message: `Select date you would like to go:
+				message: `Select date you would like to travel:
  ******************************
  * In one week   - ${addWeeks(1)}, 
  * In two weeks - ${addWeeks(2)}, 
@@ -22,7 +20,10 @@ export const dateMenu = async (): Promise<void> => {
 				choices: [`${addWeeks(1)}`, `${addWeeks(2)}`, `${addWeeks(3)}`],
 			},
 		]);
-		console.log(`Ỳour travel date: ${travelDate.selectDate}`);
+		/**
+		 * TODO - Add data to user
+		 */
+		console.log(`Your travel date: ${travelDate.selectDate}`);
 
 		// run main menu again
 		mainMenu();

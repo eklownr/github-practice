@@ -1,7 +1,6 @@
 import inquirer from "inquirer";
-import { getDestinationtInfo } from "./services/destinationService.js";
-import { getContinent } from "./services/destinationService.js";
 import { countryMenu } from "./services/destinationCLI.js";
+import { activityMenu } from "./services/activityCLI.js";
 
 // Main menu show trips, activity, budget, options.
 export const mainMenu = async (): Promise<void> => {
@@ -12,7 +11,13 @@ export const mainMenu = async (): Promise<void> => {
 				type: "select",
 				name: "action",
 				message: "What would you like to do?",
-				choices: ["View Trips", "Add Activity", "View Budget", "Exit"],
+				choices: [
+					"View Trips",
+					"Add Activity",
+					"View Budget",
+					"Insert max budget",
+					"Exit",
+				],
 			},
 		]);
 		// Handle users options
@@ -22,6 +27,12 @@ export const mainMenu = async (): Promise<void> => {
 		if (answers.action === "View Trips") {
 			countryMenu();
 		} // end of View Trips
+		if (answers.action === "Add Activity") {
+			activityMenu();
+		} // end of Add Activity
+		if (answers.action === "View Budget") {
+			console.log("View Budget");
+		} // end of View Budget
 	} catch (error) {
 		// Handle errors
 		if (error instanceof Error) {

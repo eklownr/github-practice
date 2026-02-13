@@ -26,6 +26,10 @@ export const countryMenu = async (): Promise<void> => {
 		// Selected country
 		const countryInfo = await getDestinationtInfo(countrys.selectCountry);
 
+		/**
+		 * TODO - Add data to user (save to database: db.json)
+		 */
+
 		if (countryInfo !== undefined) {
 			console.log(
 				`The capital of ${countryInfo[0].name.common} is ${countryInfo[0].capital[0]} and the flag looks like this ${countryInfo[0].flag}`,
