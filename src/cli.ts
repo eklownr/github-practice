@@ -2,7 +2,10 @@ import inquirer from "inquirer";
 import { countryMenu } from "./services/destinationCLI.js";
 import { activityMenu } from "./services/activityCLI.js";
 
-// Main menu show trips, activity, budget, options.
+/**
+ * Main menu show trips, activity, budget, options.
+ * Start the program
+ */
 export const mainMenu = async (): Promise<void> => {
 	try {
 		// Handle users options
@@ -20,7 +23,7 @@ export const mainMenu = async (): Promise<void> => {
 				],
 			},
 		]);
-		// Handle users options
+		// Exit the program
 		if (answers.action === "Exit") {
 			console.log("Bye!");
 		}

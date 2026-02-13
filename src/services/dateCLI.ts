@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 import { mainMenu } from "../cli.js";
 import { addWeeks } from "./utils.js";
+import { color } from "./formatUtils.js";
 
 // Country menu, show destinations an d price.
 export const dateMenu = async (): Promise<void> => {
@@ -23,7 +24,10 @@ export const dateMenu = async (): Promise<void> => {
 		/**
 		 * TODO - Add data to user
 		 */
-		console.log(`Your travel date: ${travelDate.selectDate}`);
+		// Print out travel date in green
+		console.log(
+			color("green", `Your travel date: ${travelDate.selectDate}`),
+		);
 
 		// run main menu again
 		mainMenu();

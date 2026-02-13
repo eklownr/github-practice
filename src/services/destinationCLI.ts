@@ -3,6 +3,7 @@ import { getDestinationtInfo } from "./destinationService.js";
 import { Greece, Pakistan, Norway } from "../models.js";
 //import { mainMenu } from "../cli.js";
 import { dateMenu } from "./dateCLI.js";
+import { color } from "./formatUtils.js";
 
 // Country menu, show destinations an d price.
 export const countryMenu = async (): Promise<void> => {
@@ -32,9 +33,12 @@ export const countryMenu = async (): Promise<void> => {
 
 		if (countryInfo !== undefined) {
 			console.log(
-				`The capital of ${countryInfo[0].name.common} is ${countryInfo[0].capital[0]} and the flag looks like this ${countryInfo[0].flag}`,
+				color(
+					"green",
+					`The capital of ${countryInfo[0].name.common}  is ${countryInfo[0].capital[0]} and the flag looks like this ${countryInfo[0].flag}`,
+				),
 			);
-			// run date menu to set travel date
+			// run date-menu to set travel date
 			dateMenu();
 		} else {
 			console.log("Country information not found");

@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 import { mainMenu } from "../cli.js";
 import { activity1, activity2, activity3 } from "../models.js";
+import { color } from "./formatUtils.js";
 
 export const activityMenu = async (): Promise<void> => {
 	try {
@@ -26,7 +27,10 @@ export const activityMenu = async (): Promise<void> => {
 		/**
 		 * TODO - Add data to user
 		 */
-		console.log(`Your activity is ${activity.selectActivity}`);
+		// Print out selected activity in green
+		console.log(
+			color("green", `Your activity is ${activity.selectActivity}`),
+		);
 
 		// Back to main-menu again
 		mainMenu();
