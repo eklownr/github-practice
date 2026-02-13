@@ -3,13 +3,14 @@ export type Activity = {
 	name: string;
 	cost: number;
 	category: "food" | "transport" | "sightseeing";
-	startTime: Date;
+	startTime: string;
 };
+
 export type Trip = {
 	id: string;
 	cost: number;
 	destination: string;
-	startDate: Date;
+	startDate: string;
 	activities?: Activity[]; // optional
 };
 
@@ -18,28 +19,28 @@ export const activity1: Activity = {
 	name: "resturants visit",
 	cost: 100,
 	category: "food",
-	startTime: new Date(),
+	startTime: "No date set",
 };
 export const activity2: Activity = {
 	id: "2",
 	name: "cab ride",
 	cost: 200,
 	category: "transport",
-	startTime: new Date(),
+	startTime: "No date set",
 };
 export const activity3: Activity = {
 	id: "3",
 	name: "boat sightseeing",
 	cost: 300,
 	category: "sightseeing",
-	startTime: new Date(),
+	startTime: "No date set",
 };
 
 export const Greece: Trip = {
 	id: "1",
 	cost: 1400,
 	destination: "Greece",
-	startDate: new Date(),
+	startDate: "No date set",
 	activities: [],
 };
 
@@ -47,7 +48,7 @@ export const Pakistan: Trip = {
 	id: "2",
 	cost: 6000,
 	destination: "Pakistan",
-	startDate: new Date(),
+	startDate: "No date set",
 	activities: [],
 };
 
@@ -55,6 +56,6 @@ export const Norway: Trip = {
 	id: "3",
 	cost: 900,
 	destination: "Norway",
-	startDate: new Date(),
+	startDate: "No date set",
 	activities: [],
 };

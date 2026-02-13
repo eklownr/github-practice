@@ -1,7 +1,8 @@
 import inquirer from "inquirer";
 import { getDestinationtInfo } from "./destinationService.js";
+import { Greece, Pakistan, Norway } from "../models.js";
 
-// Main menu show trips, activity, budget, options.
+// Country menu, show destinations an d price.
 export const countryMenu = async (): Promise<void> => {
 	try {
 		// Handle users options
@@ -9,12 +10,17 @@ export const countryMenu = async (): Promise<void> => {
 			{
 				type: "select",
 				name: "selectCountry",
-				message: "Select a country:",
-				choices: ["Greece", "Pakistan", "Norway"],
+				message: `Select a country: <country - price>
+ * Greece - ${Greece.cost} kr, 
+ * Pakistan - ${Pakistan.cost} kr, 
+ * Norway - ${Norway.cost} kr`,
+				choices: ["Greece ", "Pakistan", "Norway"],
 			},
 		]);
 
+		// Selected country
 		const countryInfo = await getDestinationtInfo(countrys.selectCountry);
+
 		if (countryInfo !== undefined) {
 			console.log(
 				`The capital of ${countryInfo[0].name.common} is ${countryInfo[0].capital[0]} the flag of this country ${countryInfo[0].flag}`,

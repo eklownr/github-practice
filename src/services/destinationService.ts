@@ -7,6 +7,8 @@ export async function getDestinationtInfo(
 	contryName: string,
 ): Promise<Country> {
 	try {
+		console.log(contryName);
+
 		const response = await fetch(contryAPI + contryName);
 		const data: Country = await response.json();
 		return data;
@@ -21,8 +23,11 @@ export async function getDestinationtInfo(
 }
 
 type CountryName = { name: { common: string[] } };
-
-// return all countries in this continent
+/**
+ * Return a list of strings with all countries in this continent
+ * @param continent - The name of the continent
+ * @returns - The list of countries
+ */
 export const getContinent = async (continent: string): Promise<string[]> => {
 	try {
 		const response = await fetch(
