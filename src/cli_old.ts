@@ -1,0 +1,62 @@
+import inquirer from "inquirer";
+import { getDestinationtInfo } from "./services/destinationService.js";
+import { getContinent } from "./services/destinationService.js";
+
+// Main menu show trips, activity, budget, options.
+const mainMenu = async (): Promise<void> => {
+	try {
+		// Handle users options
+		const answers = await inquirer.prompt<{ action: string }>([
+			{
+				type: "select",
+				name: "action",
+				message: "What would you like to do?",
+				choices: ["View Trips", "Add Activity", "View Budget", "Exit"],
+			},
+		]);
+		// Handle users options
+		if (answers.action === "View Trips") {
+			const continent = await inquirer.prompt<{ region: string }>([
+				{
+					type: "select",
+					name: "region",
+					message: "Select a continent:",
+					choices: [
+						"Africa",
+						"Americas",
+						"Asia",
+						"Europe",
+						"Oceania",
+					],
+				},
+			]);
+
+			const allCountries = await getContinent(continent.region);
+			// Handle users options
+			const countrys = await inquirer.prompt<{ selectCountry: string }>([
+				{
+					type: "select",
+					name: "selectCountry",
+					message: "Select a country:",
+					choices: allCountries,
+				},
+			]);
+
+			const countryInfo = await getDestinationtInfo(
+				countrys.selectCountry,
+			);
+			console.log(
+				`The capital of ${countryInfo[0].name.common} is ${countryInfo[0].capital[0]}`,
+			);
+		} // end of View Trips
+	} catch (error) {
+		// Handle errors
+		if (error instanceof Error) {
+			console.error("Menu error:", error.message);
+		} else {
+			console.error("Unknown error:", String(error));
+		}
+	}
+};
+
+mainMenu();
