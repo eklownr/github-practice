@@ -1,5 +1,6 @@
+// Types for Activities and Trips
 export type Activity = {
-	id: string;
+	id?: string;
 	name: string;
 	cost: number;
 	category: "food" | "transport" | "sightseeing";
@@ -7,35 +8,44 @@ export type Activity = {
 };
 
 export type Trip = {
-	id: string;
+	id?: string;
 	cost: number;
 	destination: string;
 	startDate: string;
 	activities?: Activity[]; // optional
 };
 
+/**
+ * Activities, three different objects
+ */
 export const activity1: Activity = {
 	id: "1",
-	name: "resturants visit",
-	cost: 100,
+	name: "Resturants visit",
+	cost: 400,
 	category: "food",
 	startTime: "No date set",
 };
+
 export const activity2: Activity = {
 	id: "2",
-	name: "cab ride",
+	name: "Cab ride",
 	cost: 200,
 	category: "transport",
 	startTime: "No date set",
 };
+
 export const activity3: Activity = {
 	id: "3",
-	name: "boat sightseeing",
-	cost: 300,
+	name: "Boat sightseeing",
+	cost: 800,
 	category: "sightseeing",
 	startTime: "No date set",
 };
 
+/**
+ * Trips to three different countries
+ * If user chose Greece. All data from this obj will be used
+ */
 export const Greece: Trip = {
 	id: "1",
 	cost: 1400,

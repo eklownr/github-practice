@@ -10,7 +10,8 @@ export const addWeeks = (weeks: number): string => {
 	return date.toISOString().substring(0, 10); // slice 10 firs characters to get only the date 2026-02-13
 };
 
-// TEST Log one, two, and three weeks from now
+/* TEST print out: one, two, and three weeks from now
 console.log("One week from now:", addWeeks(1));
 console.log("Two weeks from now:", addWeeks(2));
 console.log("Three weeks from now:", addWeeks(3));
+*/
