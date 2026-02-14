@@ -3,7 +3,7 @@ const contryAPI: string = "https://restcountries.com/v3.1/name/";
 type Country = { [key: string]: string | number | string[] };
 
 /**
- * Get info on a specific country
+ * Get information on a specific country
  * @param contryName - The name of the country
  * @returns - Country data
  */
@@ -23,25 +23,3 @@ export async function getDestinationtInfo(
 		throw error;
 	}
 }
-
-type CountryName = { name: { common: string[] } };
-/**
- * Return a list of strings with all countries in this continent
- * @param continent - The name of the continent
- * @returns - The list of countries
- */
-export const getContinent = async (continent: string): Promise<string[]> => {
-	try {
-		const response = await fetch(
-			"https://restcountries.com/v3.1/region/" + continent,
-		);
-		const data = await response.json();
-		const countryNames: string[] = data.map(
-			(country: CountryName) => country.name.common,
-		);
-		return countryNames;
-	} catch (error) {
-		console.log(error);
-		throw error;
-	}
-};

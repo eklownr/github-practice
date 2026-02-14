@@ -1,9 +1,10 @@
 import inquirer from "inquirer";
 import { mainMenu } from "../cli.js";
-import { activity1, activity2, activity3 } from "../models.js";
 import { color } from "./formatUtils.js";
+import { type Trip } from "../models.js";
+import { ActivityCost } from "../models.js";
 
-export const activityMenu = async (): Promise<void> => {
+export const activityMenu = async (user: Trip): Promise<void> => {
 	try {
 		// Handle users options
 		const activity = await inquirer.prompt<{ selectActivity: string }>([
@@ -12,25 +13,33 @@ export const activityMenu = async (): Promise<void> => {
 				name: "selectActivity",
 				message: `Select an activity:
  ******************************
- * ${activity1.name} - ${activity1.cost} kr, 
- * ${activity2.name} - ${activity2.cost} kr, 
- * ${activity3.name} - ${activity3.cost} kr
+ * Food		- ${ActivityCost.food} kr, 
+ * Transport 	- ${ActivityCost.transport} kr, 
+ * Sightseeing 	- ${ActivityCost.sightseeing} kr
+ * No activity 	- 0 kr
  * ******************************`,
 
-				choices: [
-					`${activity1.name}`,
-					`${activity2.name}`,
-					`${activity3.name}`,
-				],
+				choices: [`food`, `transport`, `sightseeing`, `no activity`],
 			},
 		]);
 		/**
-		 * TODO - Add data to user
+		 * Add data to user TODO:(Save user to database: db.json)
 		 */
+
+		// Store activity to user object
+		if (
+			activity.selectActivity !== "no activity" &&
+			activity.selectActivity !== undefined
+		) {
+			user.activities.push(activity.selectActivity);
+		}
+
 		// Print out selected activity in green
 		console.log(
 			color("green", `Your activity is ${activity.selectActivity}`),
 		);
+		// User data so far
+		console.log(color("red", "User data so far: "), user);
 
 		// Back to main-menu again
 		mainMenu();

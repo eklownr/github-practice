@@ -1,6 +1,17 @@
 import inquirer from "inquirer";
 import { countryMenu } from "./services/destinationCLI.js";
 import { activityMenu } from "./services/activityCLI.js";
+import { type Trip } from "./models.js";
+
+/**
+ * User object to store data
+ */
+export const user: Trip = {
+	cost: 0,
+	destination: "No destination set",
+	startDate: "No date set",
+	activities: [],
+};
 
 /**
  * Main menu show trips, activity, budget, options.
@@ -28,10 +39,10 @@ export const mainMenu = async (): Promise<void> => {
 			console.log("Bye!");
 		}
 		if (answers.action === "View Trips") {
-			countryMenu();
+			countryMenu(user); // add user as an argument
 		} // end of View Trips
 		if (answers.action === "Add Activity") {
-			activityMenu();
+			activityMenu(user);
 		} // end of Add Activity
 		if (answers.action === "View Budget") {
 			console.log("View Budget");

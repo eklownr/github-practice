@@ -2,20 +2,21 @@ import inquirer from "inquirer";
 import { mainMenu } from "../cli.js";
 import { addWeeks } from "./utils.js";
 import { color } from "./formatUtils.js";
+import { type Trip } from "../models.js";
 
 // Country menu, show destinations an d price.
-export const dateMenu = async (): Promise<void> => {
+export const dateMenu = async (user: Trip): Promise<void> => {
 	try {
 		// Handle users options
 		const travelDate = await inquirer.prompt<{ selectDate: string }>([
 			{
 				type: "select",
 				name: "selectDate",
-				message: `Select date you would like to travel:
+				message: `Select travel date:
  ******************************
- * In one week   - ${addWeeks(1)}, 
- * In two weeks - ${addWeeks(2)}, 
- * In three weeks  -  ${addWeeks(3)}
+ * One week form now     - ${addWeeks(1)}, 
+ * Two weeks from now    - ${addWeeks(2)}, 
+ * Three weeks from now  -  ${addWeeks(3)}
  * ******************************`,
 
 				choices: [`${addWeeks(1)}`, `${addWeeks(2)}`, `${addWeeks(3)}`],
@@ -24,10 +25,17 @@ export const dateMenu = async (): Promise<void> => {
 		/**
 		 * TODO - Add data to user
 		 */
+
+		// Store date to user object
+		user.startDate = travelDate.selectDate;
+		//user.activities[0].startTime = travelDate.selectDate; // same date for activities and trip
+
 		// Print out travel date in green
 		console.log(
 			color("green", `Your travel date: ${travelDate.selectDate}`),
 		);
+		// test
+		console.log(color("red", "user information so far: "), user);
 
 		// run main menu again
 		mainMenu();
