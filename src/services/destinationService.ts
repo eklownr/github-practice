@@ -3,7 +3,7 @@ const contryAPI: string = "https://restcountries.com/v3.1/name/";
 type Country = { [key: string]: string | number | string[] };
 
 /**
- * Get info on a specific country
+ * Get information on a specific country
  * @param contryName - The name of the country
  * @returns - Country data
  */
