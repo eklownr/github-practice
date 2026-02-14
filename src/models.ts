@@ -20,7 +20,7 @@ export type Trip = {
 export const enum Cost {
 	"Greece" = 1400,
 	"Pakistan" = 6000,
-	"Norway" = 8000,
+	"Norway" = 800,
 }
 
 // Cost for each activity

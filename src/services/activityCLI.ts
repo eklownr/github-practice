@@ -13,21 +13,33 @@ export const activityMenu = async (user: Trip): Promise<void> => {
 				name: "selectActivity",
 				message: `Select an activity:
  ******************************
- * Food			- ${ActivityCost.food} kr, 
+ * Food		- ${ActivityCost.food} kr, 
  * Transport 	- ${ActivityCost.transport} kr, 
  * Sightseeing 	- ${ActivityCost.sightseeing} kr
+ * No activity 	- 0 kr
  * ******************************`,
 
-				choices: [`food`, `transport`, `sightseeing`],
+				choices: [`food`, `transport`, `sightseeing`, `no activity`],
 			},
 		]);
 		/**
-		 * TODO - Add data to user
+		 * Add data to user TODO:(Save user to database: db.json)
 		 */
+
+		// Store activity to user object
+		if (
+			activity.selectActivity !== "no activity" &&
+			activity.selectActivity !== undefined
+		) {
+			user.activities.push(activity.selectActivity);
+		}
+
 		// Print out selected activity in green
 		console.log(
 			color("green", `Your activity is ${activity.selectActivity}`),
 		);
+		// User data so far
+		console.log(color("red", "User data so far: "), user);
 
 		// Back to main-menu again
 		mainMenu();

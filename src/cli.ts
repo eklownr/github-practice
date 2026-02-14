@@ -42,7 +42,7 @@ export const mainMenu = async (): Promise<void> => {
 			countryMenu(user); // add user as an argument
 		} // end of View Trips
 		if (answers.action === "Add Activity") {
-			activityMenu();
+			activityMenu(user);
 		} // end of Add Activity
 		if (answers.action === "View Budget") {
 			console.log("View Budget");
