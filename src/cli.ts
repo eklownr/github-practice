@@ -10,8 +10,28 @@ export const user: Trip = {
 	cost: 0,
 	destination: "No destination set",
 	startDate: "No date set",
-	activities: [],
+	activities: [
+		{
+			name: "No activity set",
+			activityCost: 0,
+			category: "no activity",
+			startTime: "No date set",
+		},
+	],
 };
+
+// add one more aktivity
+const addNewActivity = (user: Trip): void => {
+	user.activities?.push({
+		name: "No activity set",
+		activityCost: 0,
+		category: "no activity",
+		startTime: "No date set",
+	});
+};
+
+// Globals
+let activityCounter = 0; // track the number of activities
 
 /**
  * Main menu show trips, activity, budget, options.
@@ -42,7 +62,9 @@ export const mainMenu = async (): Promise<void> => {
 			countryMenu(user); // add user as an argument
 		} // end of View Trips
 		if (answers.action === "Add Activity") {
-			activityMenu(user);
+			activityMenu(user, activityCounter);
+			activityCounter++;
+			addNewActivity(user);
 		} // end of Add Activity
 		if (answers.action === "View Budget") {
 			console.log("View Budget");
