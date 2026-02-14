@@ -28,7 +28,7 @@ export const dateMenu = async (user: Trip): Promise<void> => {
 
 		// Store date to user object
 		user.startDate = travelDate.selectDate;
-		//user.activities[0].startTime = travelDate.selectDate; // same date for activities and trip
+		user.activities[0].startTime = travelDate.selectDate; // same date for activities and trip
 
 		// Print out travel date in green
 		console.log(

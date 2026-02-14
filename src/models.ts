@@ -1,19 +1,17 @@
 // Types for Activities
 export type Activity = {
-	id?: string; // optional
 	name?: string; // optional
-	cost: number;
-	category: "food" | "transport" | "sightseeing";
+	activityCost: number;
+	category: "food" | "transport" | "sightseeing" | "no activity";
 	startTime: string;
 };
 
 // Types for Trips
 export type Trip = {
-	id?: string; // optional
 	cost: number;
 	destination: string;
 	startDate: string;
-	activities?: Activity[]; // optional
+	activities: Activity[];
 };
 
 // Cost for each country

@@ -4,7 +4,10 @@ import { color } from "./formatUtils.js";
 import { type Trip } from "../models.js";
 import { ActivityCost } from "../models.js";
 
-export const activityMenu = async (user: Trip): Promise<void> => {
+export const activityMenu = async (
+	user: Trip,
+	counter: number,
+): Promise<void> => {
 	try {
 		// Handle users options
 		const activity = await inquirer.prompt<{ selectActivity: string }>([
@@ -31,7 +34,7 @@ export const activityMenu = async (user: Trip): Promise<void> => {
 			activity.selectActivity !== "no activity" &&
 			activity.selectActivity !== undefined
 		) {
-			user.activities.push(activity.selectActivity);
+			user.activities[counter].name = activity.selectActivity;
 		}
 
 		// Print out selected activity in green
