@@ -1,12 +1,12 @@
 import inquirer from "inquirer";
 import { getDestinationtInfo } from "./destinationService.js";
-import { Greece, Pakistan, Norway } from "../models.js";
-//import { mainMenu } from "../cli.js";
 import { dateMenu } from "./dateCLI.js";
 import { color } from "./formatUtils.js";
+import { type Trip } from "../models.js";
+import { Cost } from "../models.js";
 
 // Country menu, show destinations an d price.
-export const countryMenu = async (): Promise<void> => {
+export const countryMenu = async (user: Trip): Promise<void> => {
 	try {
 		// Handle users options
 		const countrys = await inquirer.prompt<{ selectCountry: string }>([
@@ -15,31 +15,38 @@ export const countryMenu = async (): Promise<void> => {
 				name: "selectCountry",
 				message: `Select a country: <Country> - <Ticket price>
  ******************************
- * Greece   - ${Greece.cost} kr, 
- * Pakistan - ${Pakistan.cost} kr, 
- * Norway   -  ${Norway.cost} kr
+ * Greece   - ${Cost.Greece} kr, 
+ * Pakistan - ${Cost.Pakistan} kr, 
+ * Norway   -  ${Cost.Norway} kr
  * ******************************`,
 
 				choices: ["Greece ", "Pakistan", "Norway"],
 			},
 		]);
-
 		// Selected country
 		const countryInfo = await getDestinationtInfo(countrys.selectCountry);
 
 		/**
-		 * TODO - Add data to user (save to database: db.json)
+		 * Add data to user object, TODO:(Save user to database: db.json)
 		 */
-
 		if (countryInfo !== undefined) {
+			// Store date to user object
+			user.destination = countryInfo[0].name.common;
+			user.cost = Cost[countryInfo[0].name.common];
+
+			// Print out selected country information in green
 			console.log(
 				color(
+					// add color to string
 					"green",
-					`The capital of ${countryInfo[0].name.common}  is ${countryInfo[0].capital[0]} and the flag looks like this ${countryInfo[0].flag}`,
+					`The capital of ${countryInfo[0].name.common} is ${countryInfo[0].capital[0]}. And the flag looks like this ${countryInfo[0].flag}`,
 				),
 			);
+			// test
+			console.log(color("red", "user information so far: "), user);
+
 			// run date-menu to set travel date
-			dateMenu();
+			dateMenu(user);
 		} else {
 			console.log("Country information not found");
 		}
