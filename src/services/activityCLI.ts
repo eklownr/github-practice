@@ -34,7 +34,11 @@ export const activityMenu = async (
 			activity.selectActivity !== "no activity" &&
 			activity.selectActivity !== undefined
 		) {
+			// add activity, startTime and activityCost
 			user.activities[counter].name = activity.selectActivity;
+			user.activities[counter].startTime = user.startDate;
+			user.activities[counter].activityCost =
+				ActivityCost[activity.selectActivity];
 		}
 
 		// Print out selected activity in green
