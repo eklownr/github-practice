@@ -3,8 +3,12 @@ import { countryMenu } from "./services/destinationCLI.js";
 import { activityMenu } from "./services/activityCLI.js";
 import { type Trip } from "./models.js";
 
+// Globals
+let activityCounter = 0; // track the number of activities
+
 /**
  * User object to store data
+ * type Trip from ./models
  */
 export const user: Trip = {
 	cost: 0,
@@ -20,7 +24,7 @@ export const user: Trip = {
 	],
 };
 
-// add one more aktivity
+// Function to add one more new activity
 const addNewActivity = (user: Trip): void => {
 	user.activities?.push({
 		name: "No activity set",
@@ -30,12 +34,9 @@ const addNewActivity = (user: Trip): void => {
 	});
 };
 
-// Globals
-let activityCounter = 0; // track the number of activities
-
 /**
  * Main menu show trips, activity, budget, options.
- * Start the program
+ *** Start of the program ***
  */
 export const mainMenu = async (): Promise<void> => {
 	try {
