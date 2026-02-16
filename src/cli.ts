@@ -2,6 +2,7 @@ import inquirer from "inquirer";
 import { countryMenu } from "./services/destinationCLI.js";
 import { activityMenu } from "./services/activityCLI.js";
 import { type Trip } from "./models.js";
+import { viewBudgetMenu } from "./services/viewBudgetCLI.js";
 
 // Globals
 let activityCounter = 0; // track the number of activities
@@ -58,17 +59,20 @@ export const mainMenu = async (): Promise<void> => {
 		// Exit the program
 		if (answers.action === "Exit") {
 			console.log("Bye!");
-		}
-		if (answers.action === "View Trips") {
+		} else if (answers.action === "View Trips") {
 			countryMenu(user); // add user as an argument
 		} // end of View Trips
-		if (answers.action === "Add Activity") {
+		else if (answers.action === "Add Activity") {
 			activityMenu(user, activityCounter);
 			activityCounter++;
 			addNewActivity(user);
 		} // end of Add Activity
-		if (answers.action === "View Budget") {
-			console.log("View Budget");
+		else if (answers.action === "View Budget") {
+			viewBudgetMenu(user);
+		} // end of View Budget
+		else if (answers.action === "Insert max budget") {
+			console.log("Insert max budget");
+			mainMenu();
 		} // end of View Budget
 	} catch (error) {
 		// Handle errors
