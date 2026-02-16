@@ -3,6 +3,7 @@ import { countryMenu } from "./services/destinationCLI.js";
 import { activityMenu } from "./services/activityCLI.js";
 import { type Trip } from "./models.js";
 import { viewBudgetMenu } from "./services/viewBudgetCLI.js";
+import { maxBudgetMenu } from "./services/maxBudgetCLI.js";
 
 // Globals
 let activityCounter = 0; // track the number of activities
@@ -71,8 +72,7 @@ export const mainMenu = async (): Promise<void> => {
 			viewBudgetMenu(user);
 		} // end of View Budget
 		else if (answers.action === "Insert max budget") {
-			console.log("Insert max budget");
-			mainMenu();
+			maxBudgetMenu();
 		} // end of View Budget
 	} catch (error) {
 		// Handle errors
