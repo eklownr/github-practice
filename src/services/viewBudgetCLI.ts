@@ -4,11 +4,22 @@ import { type Trip } from "../models.js";
 export const viewBudgetMenu = async (user: Trip): Promise<number> => {
 	try {
 		console.log("View budget, Trip + activities:");
+		console.log(`Trip cost: ${user.cost}`);
+		const totalCost =
+			user.cost +
+			user.activities.reduce(
+				(total, activity) => total + activity.activityCost,
+				0,
+			);
 		user.activities.forEach((activity) => {
-			console.log(`${activity.name} - ${activity.activityCost} kr`);
+			if (activity.name !== "No activity set") {
+				console.log(`${activity.name} - ${activity.activityCost} kr`);
+			}
 		});
+		console.log(`Total cost: ${totalCost} kr`);
+
 		mainMenu();
-		return 0;
+		return totalCost;
 	} catch (error) {
 		if (error instanceof Error) {
 			console.error("Menu error:", error.message);
