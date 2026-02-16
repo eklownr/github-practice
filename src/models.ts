@@ -21,9 +21,18 @@ export const enum Cost {
 	"Norway" = 800,
 }
 
+// // Cost for each activity
+// export const enum ActivityCost {
+// 	"food" = 100,
+// 	"transport" = 200,
+// 	"sightseeing" = 150,
+// }
+
 // Cost for each activity
-export const enum ActivityCost {
-	"food" = 100,
-	"transport" = 200,
-	"sightseeing" = 300,
-}
+export const ActivityCost = {
+	food: 100,
+	transport: 200,
+	sightseeing: 150,
+} as const;
+
+export type ActivityType = keyof typeof ActivityCost;

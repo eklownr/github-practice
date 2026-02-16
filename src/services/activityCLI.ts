@@ -3,7 +3,13 @@ import { mainMenu } from "../cli.js";
 import { color } from "./formatUtils.js";
 import { type Trip } from "../models.js";
 import { ActivityCost } from "../models.js";
+import { type ActivityType } from "../models.js";
 
+/**
+ * Handle activity options for user
+ * @param user - from mainMenu - instead of global user
+ * @param counter - how many activities do user have
+ */
 export const activityMenu = async (
 	user: Trip,
 	counter: number,
@@ -25,14 +31,23 @@ export const activityMenu = async (
 				choices: [`food`, `transport`, `sightseeing`, `no activity`],
 			},
 		]);
+
 		/**
-		 * Add data to user TODO:(Save user to database: db.json)
+		 * Add data to user object
 		 */
+
+		// Check if ActivityCost has valid type, returns true or false
+		const isValidActivity = (value: string): value is ActivityType => {
+			return value in ActivityCost;
+		};
 
 		// Store activity to user object
 		if (
+			// check if activity is not "no activity" or undefined
 			activity.selectActivity !== "no activity" &&
-			activity.selectActivity !== undefined
+			user.activities[counter] !== undefined &&
+			typeof activity.selectActivity === "string" &&
+			isValidActivity(activity.selectActivity)
 		) {
 			// add activity, startTime and activityCost
 			user.activities[counter].name = activity.selectActivity;
@@ -45,11 +60,13 @@ export const activityMenu = async (
 		console.log(
 			color("green", `Your activity is ${activity.selectActivity}`),
 		);
-		// User data so far
+
+		// User data so far TEST
 		console.log(color("red", "User data so far: "), user);
 
 		// Back to main-menu again
 		mainMenu();
+
 		// Handle errors
 	} catch (error) {
 		if (error instanceof Error) {
