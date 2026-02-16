@@ -1,10 +1,13 @@
 import { mainMenu } from "../cli.js";
 import { type Trip } from "../models.js";
+import { color } from "./formatUtils.js";
 
 export const viewBudgetMenu = async (user: Trip): Promise<number> => {
 	try {
+		console.log(color("blue", "*".repeat(30)));
+
 		console.log("View budget, Trip + activities:");
-		console.log(`Trip cost: ${user.cost}`);
+		console.log(`Trip to ${user.destination} cost: ${user.cost} kr`);
 		const totalCost =
 			user.cost +
 			user.activities.reduce(
@@ -16,7 +19,9 @@ export const viewBudgetMenu = async (user: Trip): Promise<number> => {
 				console.log(`${activity.name} - ${activity.activityCost} kr`);
 			}
 		});
-		console.log(`Total cost: ${totalCost} kr`);
+		console.log(color("cyan", `Total cost: ${totalCost} kr`));
+
+		console.log(color("blue", "*".repeat(30)));
 
 		mainMenu();
 		return totalCost;
