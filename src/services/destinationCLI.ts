@@ -4,6 +4,7 @@ import { dateMenu } from "./dateCLI.js";
 import { color } from "./formatUtils.js";
 import { type Trip } from "../models.js";
 import { Cost } from "../models.js";
+import { printCountryInfo } from "./printCountryInfo.js";
 
 // Country menu, show destinations an d price.
 export const countryMenu = async (user: Trip): Promise<void> => {
@@ -35,6 +36,7 @@ export const countryMenu = async (user: Trip): Promise<void> => {
 			user.cost = Cost[user.destination as keyof typeof Cost];
 
 			// Print out selected country information in green
+			printCountryInfo(countryInfo[0]);
 			console.log(
 				color(
 					// add color to string

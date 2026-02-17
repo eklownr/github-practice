@@ -2,11 +2,14 @@ const countryAPI: string = "https://restcountries.com/v3.1/name/";
 
 //type Country = { [key: string]: string | number | string[] };
 
-interface Country {
+export interface Country {
 	flag: string;
-	currency: { name: string };
+	region: string; // Continent
+	population: number;
+	currencies: { name: string };
 	capital: string;
 	name: {
+		// Country name
 		common: string;
 		official: string;
 	};
