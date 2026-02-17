@@ -8,7 +8,10 @@ export const printCountryInfo = (countryInfo: Country) => {
 	console.log(color("yellow", `Destination: ${countryInfo.name.common}`));
 	console.log(color("yellow", `Capital: ${countryInfo.capital}`));
 	console.log(
-		color("yellow", `Population: ${countryInfo.population / 1000000} M`),
+		color(
+			"yellow",
+			`Population: ${(countryInfo.population / 1_000_000).toFixed(2)} M`,
+		),
 	);
 	const currency = Object.values(countryInfo.currencies)[0];
 	if (currency) {
