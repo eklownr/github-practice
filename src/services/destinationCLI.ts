@@ -29,10 +29,10 @@ export const countryMenu = async (user: Trip): Promise<void> => {
 		/**
 		 * Add data to user object, TODO:(Save user to database: db.json)
 		 */
-		if (countryInfo !== undefined) {
+		if (Array.isArray(countryInfo) && countryInfo[0]) {
 			// Store date to user object
 			user.destination = countryInfo[0].name.common;
-			user.cost = Cost[countryInfo[0].name.common];
+			user.cost = Cost[user.destination as keyof typeof Cost];
 
 			// Print out selected country information in green
 			console.log(
@@ -43,7 +43,7 @@ export const countryMenu = async (user: Trip): Promise<void> => {
 				),
 			);
 			// test
-			console.log(color("red", "user information so far: "), user);
+			// console.log(color("red", "user information so far: "), user);
 
 			// run date-menu to set travel date
 			dateMenu(user);

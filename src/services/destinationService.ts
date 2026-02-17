@@ -1,17 +1,28 @@
-const contryAPI: string = "https://restcountries.com/v3.1/name/";
+const countryAPI: string = "https://restcountries.com/v3.1/name/";
 
-type Country = { [key: string]: string | number | string[] };
+//type Country = { [key: string]: string | number | string[] };
+
+interface Country {
+	flag: string;
+	currency: { name: string };
+	capital: string;
+	name: {
+		common: string;
+		official: string;
+	};
+}
+// Slås ihop till ett interface med båda fälten
 
 /**
  * Get information on a specific country
- * @param contryName - The name of the country
+ * @param countryName - The name of the country
  * @returns - Country data
  */
 export async function getDestinationtInfo(
-	contryName: string,
+	countryName: string,
 ): Promise<Country> {
 	try {
-		const response = await fetch(contryAPI + contryName);
+		const response = await fetch(countryAPI + countryName);
 		const data: Country = await response.json();
 		return data;
 	} catch (error) {

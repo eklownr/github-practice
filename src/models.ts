@@ -14,19 +14,12 @@ export type Trip = {
 	activities: Activity[];
 };
 
-// Cost for each country
-export const enum Cost {
-	"Greece" = 1400,
-	"Pakistan" = 6000,
-	"Norway" = 800,
+// Cost for trips
+export enum Cost {
+	Greece = 1400,
+	Pakistan = 6000,
+	Norway = 800,
 }
-
-// // Cost for each activity
-// export const enum ActivityCost {
-// 	"food" = 100,
-// 	"transport" = 200,
-// 	"sightseeing" = 150,
-// }
 
 // Cost for each activity
 export const ActivityCost = {

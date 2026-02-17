@@ -62,7 +62,7 @@ export const activityMenu = async (
 		);
 
 		// User data so far TEST
-		console.log(color("red", "User data so far: "), user);
+		// console.log(color("red", "User data so far: "), user);
 
 		// Back to main-menu again
 		mainMenu();
