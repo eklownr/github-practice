@@ -10,17 +10,11 @@ export const printCountryInfo = (countryInfo: Country) => {
 	console.log(
 		color("yellow", `Population: ${countryInfo.population / 1000000} M`),
 	);
-	const currencyKey = Object.keys(countryInfo.currencies)[0];
-	if (currencyKey) {
-		const currency = countryInfo.currencies[currencyKey];
-		if (currency) {
-			console.log(
-				color(
-					"yellow",
-					`Currency: ${currency.name} (${currency.symbol})`,
-				),
-			);
-		}
+	const currency = Object.values(countryInfo.currencies)[0];
+	if (currency) {
+		console.log(
+			color("yellow", `Currency: ${currency.name} (${currency.symbol})`),
+		);
 	}
 	console.log(color("yellow", `Flag: ${countryInfo.flag}`));
 	//console.log(color("green", `Currency: ${countryInfo.currencies[0].name}`));
