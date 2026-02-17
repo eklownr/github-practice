@@ -6,7 +6,12 @@ export interface Country {
 	flag: string;
 	region: string; // Continent
 	population: number;
-	currencies: { name: string };
+	currencies: {
+		[key: string]: {
+			name: string;
+			symbol: string;
+		};
+	};
 	capital: string;
 	name: {
 		// Country name

@@ -41,7 +41,7 @@ export const countryMenu = async (user: Trip): Promise<void> => {
 				color(
 					// add color to string
 					"green",
-					`The capital of ${countryInfo[0].name.common} is ${countryInfo[0].capital[0]}. And the flag looks like this ${countryInfo[0].flag}`,
+					`Trip to ${countryInfo[0].name.common} is going to cost ${user.cost} kr`,
 				),
 			);
 			// test
