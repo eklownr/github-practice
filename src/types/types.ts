@@ -29,3 +29,22 @@ export const ActivityCost = {
 } as const;
 
 export type ActivityType = keyof typeof ActivityCost;
+
+// Country interface to match data from API
+export interface Country {
+	flag: string;
+	region: string; // Continent
+	population: number;
+	currencies: {
+		[key: string]: {
+			name: string;
+			symbol: string;
+		};
+	};
+	capital: string;
+	name: {
+		// Country name
+		common: string;
+		official: string;
+	};
+}

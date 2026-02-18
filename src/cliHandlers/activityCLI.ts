@@ -1,9 +1,9 @@
 import inquirer from "inquirer";
-import { mainMenu } from "../cli.js";
+import { mainMenu } from "../mainCli.js";
 import { color } from "../services/formatUtils.js";
-import { type Trip } from "../models.js";
-import { ActivityCost } from "../models.js";
-import { type ActivityType } from "../models.js";
+import { type Trip } from "../types/types.js";
+import { ActivityCost } from "../types/types.js";
+import { type ActivityType } from "../types/types.js";
 
 /**
  * Handle activity options for user

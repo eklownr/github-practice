@@ -1,23 +1,5 @@
+import { type Country } from "../types/types.js";
 const countryAPI: string = "https://restcountries.com/v3.1/name/";
-
-// Country interface to match data from API
-export interface Country {
-	flag: string;
-	region: string; // Continent
-	population: number;
-	currencies: {
-		[key: string]: {
-			name: string;
-			symbol: string;
-		};
-	};
-	capital: string;
-	name: {
-		// Country name
-		common: string;
-		official: string;
-	};
-}
 
 /** *************************************
  * Get information on a specific country

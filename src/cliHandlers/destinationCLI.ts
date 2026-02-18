@@ -2,8 +2,8 @@ import inquirer from "inquirer";
 import { getDestinationtInfo } from "../services/destinationService.js";
 import { dateMenu } from "./dateCLI.js";
 import { color } from "../services/formatUtils.js";
-import { type Trip } from "../models.js";
-import { Cost } from "../models.js";
+import { type Trip } from "../types/types.js";
+import { Cost } from "../types/types.js";
 import { printCountryInfo } from "../services/printCountryInfo.js";
 
 // Country menu, show destinations an d price.

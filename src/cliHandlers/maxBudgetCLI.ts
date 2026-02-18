@@ -1,6 +1,6 @@
-import { mainMenu } from "../cli.js";
+import { mainMenu } from "../mainCli.js";
 import inquirer from "inquirer";
-import { Cost } from "../models.js";
+import { Cost } from "../types/types.js";
 import { color } from "../services/formatUtils.js";
 
 // Menu for user to insert max budget

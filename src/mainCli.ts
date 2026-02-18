@@ -4,7 +4,7 @@ import { activityMenu } from "./cliHandlers/activityCLI.js";
 import { viewBudgetMenu } from "./cliHandlers/viewBudgetCLI.js";
 import { maxBudgetMenu } from "./cliHandlers/maxBudgetCLI.js";
 import { color } from "./services/formatUtils.js";
-import { type Trip } from "./models.js";
+import { type Trip } from "./types/types.js";
 
 // Globals
 let activityCounter = 0; // track the number of activities

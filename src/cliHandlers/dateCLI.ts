@@ -1,7 +1,7 @@
 import inquirer from "inquirer";
-import { mainMenu } from "../cli.js";
+import { mainMenu } from "../mainCli.js";
 import { addWeeks, color } from "../services/formatUtils.js";
-import { type Trip } from "../models.js";
+import { type Trip } from "../types/types.js";
 
 // Country menu, show destinations an d price.
 export const dateMenu = async (user: Trip): Promise<void> => {
