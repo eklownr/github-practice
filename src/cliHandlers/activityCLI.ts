@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import { mainMenu } from "../cli.js";
-import { color } from "./formatUtils.js";
+import { color } from "../services/formatUtils.js";
 import { type Trip } from "../models.js";
 import { ActivityCost } from "../models.js";
 import { type ActivityType } from "../models.js";

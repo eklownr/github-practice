@@ -1,6 +1,6 @@
 import { mainMenu } from "../cli.js";
 import { type Trip } from "../models.js";
-import { color } from "./formatUtils.js";
+import { color } from "../services/formatUtils.js";
 
 export const viewBudgetMenu = async (user: Trip): Promise<number> => {
 	try {

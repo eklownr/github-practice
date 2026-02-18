@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import { mainMenu } from "../cli.js";
-import { addWeeks, color } from "./formatUtils.js";
+import { addWeeks, color } from "../services/formatUtils.js";
 import { type Trip } from "../models.js";
 
 // Country menu, show destinations an d price.

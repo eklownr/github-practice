@@ -1,7 +1,7 @@
 import { mainMenu } from "../cli.js";
 import inquirer from "inquirer";
 import { Cost } from "../models.js";
-import { color } from "./formatUtils.js";
+import { color } from "../services/formatUtils.js";
 
 // Menu for user to insert max budget
 export const maxBudgetMenu = async (): Promise<void> => {

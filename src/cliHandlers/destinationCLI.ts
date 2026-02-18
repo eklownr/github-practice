@@ -1,10 +1,10 @@
 import inquirer from "inquirer";
-import { getDestinationtInfo } from "./destinationService.js";
+import { getDestinationtInfo } from "../services/destinationService.js";
 import { dateMenu } from "./dateCLI.js";
-import { color } from "./formatUtils.js";
+import { color } from "../services/formatUtils.js";
 import { type Trip } from "../models.js";
 import { Cost } from "../models.js";
-import { printCountryInfo } from "./printCountryInfo.js";
+import { printCountryInfo } from "../services/printCountryInfo.js";
 
 // Country menu, show destinations an d price.
 export const countryMenu = async (user: Trip): Promise<void> => {

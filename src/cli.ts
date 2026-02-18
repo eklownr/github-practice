@@ -1,11 +1,10 @@
 import inquirer from "inquirer";
-import { countryMenu } from "./services/destinationCLI.js";
-import { activityMenu } from "./services/activityCLI.js";
-import { type Trip } from "./models.js";
-import { viewBudgetMenu } from "./services/viewBudgetCLI.js";
-import { maxBudgetMenu } from "./services/maxBudgetCLI.js";
-import { printCountryInfo } from "./services/printCountryInfo.js";
+import { countryMenu } from "./cliHandlers/destinationCLI.js";
+import { activityMenu } from "./cliHandlers/activityCLI.js";
+import { viewBudgetMenu } from "./cliHandlers/viewBudgetCLI.js";
+import { maxBudgetMenu } from "./cliHandlers/maxBudgetCLI.js";
 import { color } from "./services/formatUtils.js";
+import { type Trip } from "./models.js";
 
 // Globals
 let activityCounter = 0; // track the number of activities
