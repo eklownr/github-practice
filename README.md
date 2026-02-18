@@ -14,4 +14,10 @@ pnpm init
 pnpm tsx
 ```
 
-![cli](images/image1.png)
+Or
+
+```bash
+npx tsx src/mainCli.ts
+```
+
+![cli](images/cli-img.png)
