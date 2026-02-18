@@ -19,7 +19,7 @@ export const countryMenu = async (user: Trip): Promise<void> => {
  * Greece   - ${Cost.Greece} kr, 
  * Pakistan - ${Cost.Pakistan} kr, 
  * Norway   -  ${Cost.Norway} kr
- * ******************************`,
+ *******************************`,
 
 				choices: ["Greece ", "Pakistan", "Norway"],
 			},
@@ -28,7 +28,7 @@ export const countryMenu = async (user: Trip): Promise<void> => {
 		const countryInfo = await getDestinationtInfo(countrys.selectCountry);
 
 		/**
-		 * Add data to user object, TODO:(Save user to database: db.json)
+		 * Add data to user object
 		 */
 		if (Array.isArray(countryInfo) && countryInfo[0]) {
 			// Store date to user object

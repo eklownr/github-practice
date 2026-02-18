@@ -16,7 +16,7 @@ export const dateMenu = async (user: Trip): Promise<void> => {
  * One week form now     - ${addWeeks(1)}, 
  * Two weeks from now    - ${addWeeks(2)}, 
  * Three weeks from now  -  ${addWeeks(3)}
- * ******************************`,
+ *******************************`,
 
 				choices: [`${addWeeks(1)}`, `${addWeeks(2)}`, `${addWeeks(3)}`],
 			},

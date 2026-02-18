@@ -4,6 +4,8 @@ import { activityMenu } from "./services/activityCLI.js";
 import { type Trip } from "./models.js";
 import { viewBudgetMenu } from "./services/viewBudgetCLI.js";
 import { maxBudgetMenu } from "./services/maxBudgetCLI.js";
+import { printCountryInfo } from "./services/printCountryInfo.js";
+import { color } from "./services/formatUtils.js";
 
 // Globals
 let activityCounter = 0; // track the number of activities
@@ -57,23 +59,45 @@ export const mainMenu = async (): Promise<void> => {
 				],
 			},
 		]);
-		// Exit the program
+
+		console.clear(); // Clear the console afer each action
+
 		if (answers.action === "Exit") {
-			console.log("Bye!");
+			// Exit the program and print out user information
+			// TODO:(Save user to database: db.json)
+			let totalCost: number = user.cost;
+
+			console.log(
+				color(
+					"green",
+					`Have a nice trip to ${user.destination} - ${user.startDate}.`,
+				),
+			);
+
+			console.log(`${user.destination} - ${user.cost} kr`);
+			user.activities.forEach((activity) => {
+				if (activity.name !== "No activity set") {
+					console.log(
+						`${activity.name} - ${activity.activityCost} kr`,
+					);
+					totalCost += activity.activityCost;
+				}
+			});
+
+			console.log(
+				color("green", `Total cost: ${totalCost} kr. === Goodbye! ===`),
+			);
 		} else if (answers.action === "View Trips") {
 			countryMenu(user); // add user as an argument
-		} // end of View Trips
-		else if (answers.action === "Add Activity") {
+		} else if (answers.action === "Add Activity") {
 			activityMenu(user, activityCounter);
 			activityCounter++;
 			addNewActivity(user);
-		} // end of Add Activity
-		else if (answers.action === "View Budget") {
+		} else if (answers.action === "View Budget") {
 			viewBudgetMenu(user);
-		} // end of View Budget
-		else if (answers.action === "Insert max budget") {
+		} else if (answers.action === "Insert max budget") {
 			maxBudgetMenu();
-		} // end of View Budget
+		}
 	} catch (error) {
 		// Handle errors
 		if (error instanceof Error) {
