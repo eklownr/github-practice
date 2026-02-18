@@ -6,7 +6,7 @@ export const viewBudgetMenu = async (user: Trip): Promise<number> => {
 	try {
 		console.log(color("blue", "*".repeat(30)));
 
-		console.log("View budget, Trip + activities:");
+		console.log(`View budget, ${color("yellow", "Trip + activities:")}`);
 		console.log(`Trip to ${user.destination} cost: ${user.cost} kr`);
 		const totalCost =
 			user.cost +
